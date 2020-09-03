@@ -64,7 +64,6 @@ public class MazeRaw
     {
         if (classFruits != null)
         {
-            System.out.println(classFruits);
             this.classFruits = ParseUtils.parseStringToClasses(classFruits);
         }
         else

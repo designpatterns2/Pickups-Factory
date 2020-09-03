@@ -41,9 +41,10 @@ public class MazeBackgroundDynamic
     
     private Dot sampleDot = new Dot();
     private Energizer sampleEnergizer = new Energizer();
-    private Fruit sampleFruit = VisualObjectFactory.getFruit(Cherry.class);
+    private Fruit sampleFruit = new Cherry();
     private Score sampleScore = new Score();
-
+    
+    private VisualObjectFactory voFactory = new VisualObjectFactory();
     
     /**
      * Variable local to adjustModel is made a member to avoid gc.
@@ -168,7 +169,7 @@ public class MazeBackgroundDynamic
     private void setBackgroundRemainder(
             MazeBackgroundStatic mazeBgStatic, int[][] clearArea)
     {             
-        VisualObject visualObject = VisualObjectFactory.construct(defaultForegroundClass);
+        VisualObject visualObject = voFactory.construct(defaultForegroundClass);
         
         for (int xCoarse=1; xCoarse<=xCoarseBoundary - 2; xCoarse++)
         {

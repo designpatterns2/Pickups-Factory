@@ -277,7 +277,7 @@ public class PacDasher extends MobileVisualObject implements IPlayer
         // the execution of this method
         for (IPacListener listener : iPacListeners)   
         {
-            listener.pacDasherMoved(new PacMoveEvent(xy,
+            listener.pacDasherMoved(PacMoveEvent.getInstance(xy, 
                 posAndDirection.getCurDirectionCode(),this));
         }
     }

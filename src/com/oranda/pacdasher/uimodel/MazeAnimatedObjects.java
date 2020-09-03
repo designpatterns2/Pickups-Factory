@@ -33,7 +33,8 @@ public class MazeAnimatedObjects
     private ArrayList<MobileVisualObject> mobileList;
     private ArrayList<AnimatedVisualObject> animatedList;
     private Score sampleScore = new Score();
-    private Fruit sampleFruit = VisualObjectFactory.getFruit(Cherry.class);
+    private Fruit sampleFruit = new Cherry();
+    private VisualObjectFactory voFactory = new VisualObjectFactory();
     
     private static int energizerRenderCount; // = 0
     
@@ -88,7 +89,7 @@ public class MazeAnimatedObjects
              XYCManager xycm = XYCManager.getInstance();
              XYCoarse xyCoarse = xycm.createXYC(xCoarse, yCoarse);
              AnimatedVisualObject avo = (AnimatedVisualObject) 
-                    VisualObjectFactory.construct(visualObjectClass);
+                    voFactory.construct(visualObjectClass);
              Const.logger.fine("about to init " + visualObjectClass);
              avo.initialize(xyCoarse);
              if (avo.getTypeID() != sampleFruit.getTypeID())

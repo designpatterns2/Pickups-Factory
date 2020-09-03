@@ -12,15 +12,13 @@
  
 package com.oranda.pacdasher.uimodel;
 
-import com.oranda.pacdasher.uimodel.visualobjects.*;
 import com.oranda.util.Str;
 
 public class VisualObjectFactory
 {
-
     VisualObjectFactory() {}
     
-	static VisualObject construct(Class visualObjectClass)
+	VisualObject construct(Class visualObjectClass)
 	{
 		VisualObject visualObject = null;
 		
@@ -34,19 +32,5 @@ public class VisualObjectFactory
                     + visualObjectClass.getName() + Str.getStackTraceAsStr(e));
 		}
 		return visualObject;
-	}
-
-	public static Fruit getFruit(Class fruit) {
-		if(fruit.equals(Cherry.class)) {
-			return new Cherry();
-		} else if(fruit.equals(Apple.class)) {
-			return new Apple();
-		} else if(fruit.equals(Kiwi.class)) {
-			return new Kiwi();
-		} else if(fruit.equals(Peach.class)) {
-			return new Peach();
-		} else if(fruit.equals(Strawberry.class)) {
-			return new Strawberry();
-		} else return null;
 	}
 }

@@ -84,7 +84,9 @@ public class Maze implements Cloneable
      */
     private ArrayList<Fruit> fruits;
     
-    private Fruit sampleFruit = VisualObjectFactory.getFruit(Cherry.class);
+    private VisualObjectFactory voFactory = new VisualObjectFactory();
+    
+    private Fruit sampleFruit = new Cherry();
     
     private Set<Integer> levels; // a single Maze may be used at many levels
     
@@ -176,7 +178,7 @@ public class Maze implements Cloneable
     {
         for (Class fruitClass : fruitClasses)
         {
-            Fruit fruit = (Fruit) VisualObjectFactory.getFruit(fruitClass);
+            Fruit fruit = (Fruit) voFactory.construct(fruitClass);
             fruit.initialize(xycFruit);           
             this.fruits.add(fruit);            
         }
@@ -473,7 +475,7 @@ public class Maze implements Cloneable
         // processing. Helps for cloning to have a data structure
         // without internal dependencies.
         
-        VisualObject visualObject = VisualObjectFactory.construct(visualObjectClass);
+        VisualObject visualObject = voFactory.construct(visualObjectClass);
         Const.logger.fine("" + visualObjectClass.getName() + " " 
                 + isForeground + "" + xycs);
         

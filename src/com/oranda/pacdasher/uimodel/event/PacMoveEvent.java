@@ -18,17 +18,26 @@ import com.oranda.pacdasher.uimodel.util.XY;
 
 public class PacMoveEvent
 {
+    // make this a singleton to save memory
+    // Assuming only one pacDasher, one animation thread,
+    // there is only one pacMoveEvent at a time
+    private static PacMoveEvent pacMoveEvent = new PacMoveEvent();
     
     private XY xy;
     private DirectionCode directionCode;
     private IMobile iMobileSource;
     
-    public PacMoveEvent(XY xy, DirectionCode directionCode,
-                         IMobile iMobileSource)
+    private PacMoveEvent()
     {
-        this.xy = xy;
-        this.directionCode = directionCode;
-        this.iMobileSource = iMobileSource;
+    }       
+    
+    public static PacMoveEvent getInstance(XY xy, DirectionCode directionCode, 
+        IMobile iMobileSource)
+    {
+        pacMoveEvent.xy = xy;
+        pacMoveEvent.directionCode = directionCode;
+        pacMoveEvent.iMobileSource = iMobileSource;
+        return pacMoveEvent;
     }
     
     public IMobile getSource()

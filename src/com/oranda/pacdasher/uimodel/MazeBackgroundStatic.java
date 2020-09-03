@@ -30,7 +30,8 @@ public class MazeBackgroundStatic
     
     private int xCoarseBoundary;
     private int yCoarseBoundary;
-
+    
+    private VisualObjectFactory voFactory = new VisualObjectFactory();
     private VisualObject sampleBackground = new Background();
     
     // local to getNeighbors but hate gc
@@ -50,7 +51,7 @@ public class MazeBackgroundStatic
     void setDefaultBackgroundClass(Class visualObjectClass)
     {        
         this.backgroundObjectClass = visualObjectClass;
-		sampleBackground = VisualObjectFactory.construct(backgroundObjectClass);
+		sampleBackground = voFactory.construct(backgroundObjectClass);
 		for (int xCoarse=0; xCoarse<=xCoarseBoundary; xCoarse++)
         {
             for (int yCoarse=0; yCoarse<=yCoarseBoundary; yCoarse++)
@@ -214,7 +215,7 @@ public class MazeBackgroundStatic
                 this.xCoarseBoundary, this.yCoarseBoundary);
         clone.backgroundObjectClass = this.backgroundObjectClass;
         clone.sampleBackground 
-                = VisualObjectFactory.construct(this.backgroundObjectClass);
+                = voFactory.construct(this.backgroundObjectClass); 
 
         clone.staticBgImage = this.staticBgImage;      
         clone.wallColor = this.wallColor;
